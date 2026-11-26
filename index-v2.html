@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifky Jonathan Tambuwun | Portfolio & Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --navy-deep: #060e1f;
+            --navy-primary: #0b192c;
+            --navy-mid: #13294b;
+            --glass-bg: rgba(255, 255, 255, 0.12);
+            --glass-bg-strong: rgba(255, 255, 255, 0.18);
+            --glass-border: rgba(226, 232, 240, 0.35);
+            --silver-light: #f8fafc;
+            --silver-mid: #cbd5e1;
+            --silver-metallic: linear-gradient(135deg, #ffffff 0%, #cbd5e1 45%, #94a3b8 75%, #e2e8f0 100%);
+            --text-primary: #ffffff;
+            --text-secondary: #e2e8f0;
+            --text-muted: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at top right, #1b365d 0%, var(--navy-primary) 45%, var(--navy-deep) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        /* Animated Background Particles & Orbs */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.45;
+            animation: floatOrb 18s infinite ease-in-out alternate;
+        }
+
+        .orb-1 {
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(203, 213, 225, 0.35), transparent 70%);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56, 103, 174, 0.4), transparent 70%);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 70%);
+            top: 40%;
+            left: 55%;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(35px, -45px) scale(1.08); }
+            100% { transform: translate(-25px, 30px) scale(0.95); }
+        }
+
+        /* Navigation Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(6, 14, 31, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 0.9rem 5%;
+        }
+
+        .nav-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .brand {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 1.5px;
+            background: var(--silver-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.6rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.35rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 0.55rem 1.2rem;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .nav-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .nav-btn.active {
+            background: var(--silver-metallic);
+            color: var(--navy-deep);
+            box-shadow: 0 4px 18px rgba(226, 232, 240, 0.35);
+        }
+
+        /* Main Container & Multi-Page System */
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 2.5rem 5% 4.5rem;
+        }
+
+        .page-section {
+            display: none;
+            opacity: 0;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: pageReveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes pageReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(24px) scale(0.985);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Staggered Child Animations per Page */
+        .page-section.active .anim-item {
+            opacity: 0;
+            animation: itemSlideUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .page-section.active .delay-1 { animation-delay: 0.1s; }
+        .page-section.active .delay-2 { animation-delay: 0.22s; }
+        .page-section.active .delay-3 { animation-delay: 0.34s; }
+        .page-section.active .delay-4 { animation-delay: 0.46s; }
+
+        @keyframes itemSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Metallic & Glass Cards */
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.08) 100%);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--glass-border);
+            border-radius: 22px;
+            padding: 2rem;
+            box-shadow: 0 12px 36px rgba(3, 8, 20, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.12), transparent);
+            transform: skewX(-25deg);
+            transition: 0.75s;
+            pointer-events: none;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 18px 42px rgba(3, 8, 20, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .glass-card:hover::before {
+            left: 150%;
+        }
+
+        /* Typography & Metallic Accents */
+        .silver-text {
+            background: var(--silver-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title {
+            font-size: 1.65rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #ffffff;
+            letter-spacing: 0.3px;
+        }
+
+        .section-title i {
+            background: var(--silver-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.4rem;
+        }
+
+        /* PAGE 1: HERO & ALL ABOUT ME */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2.2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-frame-wrapper {
+            position: relative;
+            width: 260px;
+            height: 310px;
+            margin: 0 auto;
+            animation: subtleFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .profile-frame-ring {
+            position: absolute;
+            inset: -6px;
+            border-radius: 26px;
+            background: linear-gradient(135deg, #ffffff, #94a3b8, #e2e8f0, #475569, #ffffff);
+            background-size: 300% 300%;
+            animation: shimmerBorder 6s linear infinite;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(203, 213, 225, 0.3);
+        }
+
+        @keyframes shimmerBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .profile-img {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 22px;
+            border: 3px solid var(--navy-primary);
+            display: block;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.9rem;
+        }
+
+        .hero-name {
+            font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 0.98rem;
+            color: #f1f5f9;
+            font-weight: 500;
+        }
+
+        .meta-item i {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.18);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.85rem;
+        }
+
+        .about-text p {
+            color: #f8fafc;
+            font-size: 1.02rem;
+            margin-bottom: 1.15rem;
+            text-align: justify;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Bible Verses Grid */
+        .verses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .verse-card {
+            background: rgba(11, 25, 44, 0.65);
+            border-left: 4px solid #e2e8f0;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .verse-ref {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-bottom: 0.55rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .verse-quote {
+            font-style: italic;
+            color: #f1f5f9;
+            font-size: 0.96rem;
+            line-height: 1.65;
+        }
+
+        /* PAGE 2: EDUCATION, ORGANIZATION & ACHIEVEMENTS */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 1.6rem;
+            border-left: 2px solid rgba(226, 232, 240, 0.45);
+            display: flex;
+            flex-direction: column;
+            gap: 1.35rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            background: rgba(11, 25, 44, 0.55);
+            padding: 1.1rem 1.3rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(6px);
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.05rem;
+            top: 1.35rem;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--silver-metallic);
+            border: 2px solid var(--navy-primary);
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.22rem 0.7rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.4px;
+        }
+
+        .timeline-title {
+            font-size: 1.03rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-sub {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.4rem;
+        }
+
+        .award-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(11, 25, 44, 0.65) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 18px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.1rem;
+            transition: transform 0.35s ease;
+        }
+
+        .award-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .award-icon {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            border-radius: 14px;
+            background: var(--silver-metallic);
+            color: var(--navy-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 6px 18px rgba(226, 232, 240, 0.35);
+        }
+
+        /* PAGE 3: SKILLS, TALENTS & CONTACT */
+        .pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .silver-pill {
+            background: rgba(11, 25, 44, 0.65);
+            border: 1px solid rgba(226, 232, 240, 0.45);
+            color: #ffffff;
+            padding: 0.7rem 1.25rem;
+            border-radius: 14px;
+            font-size: 0.96rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .silver-pill:hover {
+            background: var(--silver-metallic);
+            color: var(--navy-deep);
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .contact-box {
+            background: rgba(11, 25, 44, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            border-radius: 18px;
+            padding: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.35s ease;
+        }
+
+        .contact-box:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            transform: translateY(-4px);
+        }
+
+        .contact-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: var(--silver-metallic);
+            color: var(--navy-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+            padding: 0.45rem 0.85rem;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .copy-btn:hover {
+            background: #ffffff;
+            color: var(--navy-deep);
+        }
+
+        /* Page Navigation Controls at Bottom */
+        .page-footer-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2.2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-silver {
+            background: var(--silver-metallic);
+            color: var(--navy-deep);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.92rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            box-shadow: 0 6px 20px rgba(226, 232, 240, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-silver:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.92rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.24);
+        }
+
+        .page-indicator {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 1.5rem;
+            color: #cbd5e1;
+            font-size: 0.88rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(6, 14, 31, 0.7);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--silver-metallic);
+            color: var(--navy-deep);
+            padding: 0.8rem 1.4rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.35s ease;
+            z-index: 999;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 860px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-meta {
+                align-items: center;
+            }
+            .two-col-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-container {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Animated Orbs -->
+    <div class="bg-canvas">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Header & 3-Page Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="brand">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>RJT • PROFILE</span>
+            </div>
+            <nav class="nav-tabs" aria-label="Navigasi Halaman">
+                <button class="nav-btn active" onclick="switchPage(1)" id="tab-1">
+                    <i class="fa-solid fa-user"></i> 1. All About Me
+                </button>
+                <button class="nav-btn" onclick="switchPage(2)" id="tab-2">
+                    <i class="fa-solid fa-graduation-cap"></i> 2. Pendidikan & Karir
+                </button>
+                <button class="nav-btn" onclick="switchPage(3)" id="tab-3">
+                    <i class="fa-solid fa-star"></i> 3. Bakat & Kontak
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==================== PAGE 1: PROFILE & ALL ABOUT ME ==================== -->
+        <section id="page-1" class="page-section active">
+            <div class="glass-card anim-item delay-1">
+                <div class="hero-grid">
+                    <div class="profile-frame-wrapper">
+                        <div class="profile-frame-ring"></div>
+                        <img src="128017.png" alt="Foto Profil Rifky Jonathan Tambuwun" class="profile-img">
+                    </div>
+                    <div>
+                        <div class="hero-badge">
+                            <i class="fa-solid fa-shield-halved"></i> Mahasiswa S1 Manajemen • UNSRAT
+                        </div>
+                        <h1 class="hero-name silver-text">Rifky Jonathan Tambuwun</h1>
+                        <div class="hero-meta">
+                            <div class="meta-item">
+                                <i class="fa-solid fa-cake-candles"></i>
+                                <span><strong>Tempat, Tanggal Lahir:</strong> Tomohon, 04 September 2007</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span><strong>Domisili:</strong> Sonder, Kab. Minahasa, Sulawesi Utara</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fa-solid fa-users-gear"></i>
+                                <span><strong>Peran Saat Ini:</strong> Wakil Ketua Pelayanan Siswa Kristen Kota Tomohon (2026–Sekarang)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card anim-item delay-2" style="margin-top: 1.8rem;">
+                <h2 class="section-title">
+                    <i class="fa-solid fa-feather-pointed"></i>
+                    <span class="silver-text">All about me</span>
+                </h2>
+                <div class="about-text">
+                    <p>
+                        Halo! Perkenalkan, saya <strong>Rifky Jonathan Tambuwun</strong>, lahir di Tomohon pada 04 September 2007. Sebagai anak muda yang tumbuh di Tanah Minahasa, saya selalu percaya bahwa masa muda adalah waktu terbaik untuk terus belajar, aktif bertumbuh, dan memberikan kontribusi positif bagi lingkungan sekitar. Perjalanan saya dalam dunia organisasi mulai terasah secara nyata saat dipercaya mengemban tugas sebagai Koordinator Bidang Pelayanan SMA Negeri 1 Tomohon masa bakti 2024–2025. Dari pengalaman di lingkungan sekolah tersebut, saya belajar banyak tentang kerja sama tim, kedisiplinan, serta bagaimana merancang kegiatan yang bermanfaat bagi sesama pelajar.
+                    </p>
+                    <p>
+                        Langkah tersebut kemudian membawa saya bertumbuh ke ruang lingkup yang lebih luas di tingkat kota. Pada masa bakti 2025–2026, saya dipercaya menjabat sebagai Koordinator Bidang Pelayanan Umum dan Media Center Pelayanan Siswa Kristen Kota Tomohon, di mana saya banyak terlibat dalam koordinasi program pelayanan sekaligus pengelolaan informasi dan media komunikasi. Kepercayaan serta proses belajar yang terus berjalan akhirnya mengantarkan saya pada tanggung jawab yang lebih besar, yaitu mengemban amanah sebagai Wakil Ketua Pelayanan Siswa Kristen Kota Tomohon dari tahun 2026 hingga saat ini. Peran ini melatih saya untuk semakin sigap dalam memimpin, membangun komunikasi yang baik dengan banyak orang, dan memastikan setiap rencana berjalan dengan tertata.
+                    </p>
+                    <p>
+                        Di samping kesibukan berorganisasi dan melayani, saya juga memiliki ketertarikan yang besar di bidang ilmu pengetahuan dan eksplorasi akademik. Rasa ingin tahu serta ketekunan dalam belajar membawa saya meraih <em>Honorable Mention 1</em> (Juara 4) Olimpiade Sains Nasional Tingkat Kabupaten/Kota Bidang Biologi pada tahun 2023, dan kembali berprestasi dengan meraih <em>Honorable Mention 2</em> (Juara 5) Olimpiade Sains Nasional Tingkat Kabupaten/Kota Bidang Astronomi pada tahun 2024. Bagi saya, perpaduan antara pengalaman organisasi, pengelolaan media center, dan ketertarikan pada dunia sains membentuk cara berpikir yang seimbang—menjadikan saya pribadi yang teliti terhadap detail, komunikatif, terbuka pada hal-hal baru, dan selalu antusias menghadapi setiap tantangan ke depan.
+                    </p>
+                </div>
+
+                <!-- Ayat Alkitab Pegangan -->
+                <div class="verses-grid anim-item delay-3">
+                    <div class="verse-card">
+                        <div class="verse-ref">
+                            <i class="fa-solid fa-book-bible"></i> Kolose 3:23
+                        </div>
+                        <p class="verse-quote">
+                            "Apa pun juga yang kamu perbuat, perbuatlah dengan segenap hatimu seperti untuk Tuhan dan bukan untuk manusia."
+                        </p>
+                    </div>
+                    <div class="verse-card">
+                        <div class="verse-ref">
+                            <i class="fa-solid fa-book-bible"></i> Amsal 3:5–6
+                        </div>
+                        <p class="verse-quote">
+                            "Percayalah kepada TUHAN dengan segenap hatimu, dan janganlah bersandar kepada pengertianmu sendiri. Akuilah Dia dalam segala lakumu, maka Ia akan meluruskan jalanmu."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer-nav anim-item delay-4">
+                <span class="page-indicator">Halaman 1 dari 3 • All About Me</span>
+                <button class="btn-silver" onclick="switchPage(2)">
+                    Lanjut ke Pendidikan & Organisasi <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE 2: PENDIDIKAN, ORGANISASI & PRESTASI ==================== -->
+        <section id="page-2" class="page-section">
+            <div class="two-col-grid">
+                <!-- Riwayat Pendidikan -->
+                <div class="glass-card anim-item delay-1">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <span class="silver-text">Riwayat Pendidikan</span>
+                    </h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-badge">Sekarang • Mahasiswa</span>
+                            <div class="timeline-title">Universitas Sam Ratulangi Manado</div>
+                            <div class="timeline-sub">Fakultas Ekonomi dan Bisnis • Program Studi S1 Manajemen</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-badge">SMA</span>
+                            <div class="timeline-title">SMA Negeri 1 Tomohon</div>
+                            <div class="timeline-sub">Kota Tomohon, Sulawesi Utara</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-badge">SMP</span>
+                            <div class="timeline-title">SMP Negeri 1 Sonder</div>
+                            <div class="timeline-sub">Sonder, Kab. Minahasa</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-badge">SD</span>
+                            <div class="timeline-title">SD GMIM Sendangan Sonder</div>
+                            <div class="timeline-sub">Sonder, Kab. Minahasa</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-badge">TK / PAUD</span>
+                            <div class="timeline-title">TK/PAUD GMIM Imanuel Sendangan Sonder</div>
+                            <div class="timeline-sub">Sonder, Kab. Minahasa</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pengalaman Organisasi -->
+                <div class="glass-card anim-item delay-2">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-sitemap"></i>
+                        <span class="silver-text">Pengalaman Organisasi</span>
+                    </h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-badge">2026 – Sekarang</span>
+                            <div class="timeline-title">Wakil Ketua</div>
+                            <div class="timeline-sub">Pelayanan Siswa Kristen Kota Tomohon</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-badge">2025 – 2026</span>
+                            <div class="timeline-title">Koordinator Bidang Pelayanan Umum & Media Center</div>
+                            <div class="timeline-sub">Pelayanan Siswa Kristen Kota Tomohon</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-badge">2024 – 2025</span>
+                            <div class="timeline-title">Koordinator Bidang Pelayanan</div>
+                            <div class="timeline-sub">SMA Negeri 1 Tomohon</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-badge">2023 – 2024</span>
+                            <div class="timeline-title">Anggota OSIS</div>
+                            <div class="timeline-sub">SMA Negeri 1 Tomohon</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-badge">2019 – 2020</span>
+                            <div class="timeline-title">Anggota OSIS</div>
+                            <div class="timeline-sub">SMP Negeri 1 Sonder</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prestasi Akademik -->
+            <div class="glass-card anim-item delay-3">
+                <h2 class="section-title">
+                    <i class="fa-solid fa-medal"></i>
+                    <span class="silver-text">Prestasi Akademik</span>
+                </h2>
+                <div class="achievements-grid">
+                    <div class="award-card">
+                        <div class="award-icon">
+                            <i class="fa-solid fa-dna"></i>
+                        </div>
+                        <div>
+                            <span class="timeline-badge">Tahun 2023</span>
+                            <div class="timeline-title">Honorable Mention 1 (Juara 4)</div>
+                            <div class="timeline-sub">Olimpiade Sains Nasional Tingkat Kabupaten/Kota Bidang Biologi</div>
+                        </div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">
+                            <i class="fa-solid fa-meteor"></i>
+                        </div>
+                        <div>
+                            <span class="timeline-badge">Tahun 2024</span>
+                            <div class="timeline-title">Honorable Mention 2 (Juara 5)</div>
+                            <div class="timeline-sub">Olimpiade Sains Nasional Tingkat Kabupaten/Kota Bidang Astronomi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer-nav anim-item delay-4">
+                <button class="btn-outline" onclick="switchPage(1)">
+                    <i class="fa-solid fa-arrow-left"></i> Kembali
+                </button>
+                <span class="page-indicator">Halaman 2 dari 3 • Pendidikan & Karir</span>
+                <button class="btn-silver" onclick="switchPage(3)">
+                    Lanjut ke Bakat & Kontak <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE 3: KEAHLIAN, BAKAT & HUBUNGI SAYA ==================== -->
+        <section id="page-3" class="page-section">
+            <div class="two-col-grid">
+                <!-- Minat & Keahlian -->
+                <div class="glass-card anim-item delay-1">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span class="silver-text">Minat & Keahlian</span>
+                    </h2>
+                    <div class="pill-container">
+                        <div class="silver-pill"><i class="fa-solid fa-seedling"></i> Pengembangan Diri</div>
+                        <div class="silver-pill"><i class="fa-solid fa-palette"></i> Kreativitas</div>
+                        <div class="silver-pill"><i class="fa-solid fa-laptop-code"></i> Teknologi Digital</div>
+                        <div class="silver-pill"><i class="fa-solid fa-handshake"></i> Komunikasi & Kolaborasi</div>
+                        <div class="silver-pill"><i class="fa-solid fa-microphone-lines"></i> Public Speaking</div>
+                    </div>
+                </div>
+
+                <!-- Minat & Bakat -->
+                <div class="glass-card anim-item delay-2">
+                    <h2 class="section-title">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span class="silver-text">Minat & Bakat</span>
+                    </h2>
+                    <div class="pill-container">
+                        <div class="silver-pill"><i class="fa-solid fa-drum"></i> Rebana</div>
+                        <div class="silver-pill"><i class="fa-solid fa-flag"></i> Banners</div>
+                        <div class="silver-pill"><i class="fa-solid fa-music"></i> Menyanyi</div>
+                        <div class="silver-pill"><i class="fa-solid fa-microchip"></i> Bidang Teknologi</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hubungi Saya -->
+            <div class="glass-card anim-item delay-3">
+                <h2 class="section-title">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span class="silver-text">Hubungi Saya</span>
+                </h2>
+                <p style="color: #f1f5f9; margin-bottom: 1.2rem;">
+                    Tertarik untuk berkolaborasi, berdiskusi, atau terhubung lebih lanjut? Silakan hubungi saya melalui saluran resmi di bawah ini:
+                </p>
+                <div class="contact-grid">
+                    <a href="https://instagram.com/joonazxt." target="_blank" rel="noopener noreferrer" class="contact-box">
+                        <div class="contact-left">
+                            <div class="contact-icon">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.85rem; color: #cbd5e1;">Instagram</div>
+                                <div style="font-size: 1.08rem; font-weight: 700;">@joonazxt.</div>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="color: #e2e8f0;"></i>
+                    </a>
+
+                    <div class="contact-box">
+                        <a href="mailto:rifkytambuwun@gmail.com" class="contact-left" style="text-decoration: none; color: inherit;">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.85rem; color: #cbd5e1;">Email</div>
+                                <div style="font-size: 1.02rem; font-weight: 700; word-break: break-all;">rifkytambuwun@gmail.com</div>
+                            </div>
+                        </a>
+                        <button class="copy-btn" onclick="copyEmail()">
+                            <i class="fa-regular fa-copy"></i> Salin
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer-nav anim-item delay-4">
+                <button class="btn-outline" onclick="switchPage(2)">
+                    <i class="fa-solid fa-arrow-left"></i> Kembali
+                </button>
+                <span class="page-indicator">Halaman 3 dari 3 • Bakat & Kontak</span>
+                <button class="btn-silver" onclick="switchPage(1)">
+                    <i class="fa-solid fa-rotate-left"></i> Kembali ke Awal
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 <strong>Rifky Jonathan Tambuwun</strong> • Sonder, Minahasa, Sulawesi Utara
+    </footer>
+
+    <div id="toast" class="toast">Email berhasil disalin ke clipboard!</div>
+
+    <script>
+        function switchPage(pageNumber) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Remove active state from all tabs
+            const tabs = document.querySelectorAll('.nav-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show target section & activate tab
+            const targetSection = document.getElementById('page-' + pageNumber);
+            const targetTab = document.getElementById('tab-' + pageNumber);
+
+            if (targetSection && targetTab) {
+                // Force reflow to restart CSS animations cleanly
+                void targetSection.offsetWidth;
+                targetSection.classList.add('active');
+                targetTab.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function copyEmail() {
+            const email = "rifkytambuwun@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2600);
+            });
+        }
+    </script>
+</body>
+</html>
